@@ -7,7 +7,6 @@ import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import xyz.panyi.imgpuzzle.R
 import xyz.panyi.imgpuzzle.common.LogUtil
 import xyz.panyi.imgpuzzle.module.picker.ImageSelectorActivity

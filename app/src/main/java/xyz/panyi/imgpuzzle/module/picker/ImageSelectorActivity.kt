@@ -4,8 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.activity.ComponentActivity
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import xyz.panyi.imgpuzzle.R
@@ -38,6 +36,7 @@ class ImageSelectorActivity : AppCompatActivity() {//end class
         val list = MediaQuery.queryImageFile(this)
     }
 
+    @Suppress("DEPRECATION")
     private fun readParams(){
         mOption = intent.getSerializableExtra(INTENT_SELECTOR_OPTION) as SelectorOption
     }
