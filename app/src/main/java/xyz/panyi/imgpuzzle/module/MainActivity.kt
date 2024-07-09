@@ -1,22 +1,24 @@
-package xyz.panyi.imgpuzzle
+package xyz.panyi.imgpuzzle.module
 
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
-import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
+import xyz.panyi.imgpuzzle.R
 import xyz.panyi.imgpuzzle.common.LogUtil
-import xyz.panyi.imgpuzzle.picker.ImageSelectorActivity
-import xyz.panyi.imgpuzzle.picker.SelectorOption
+import xyz.panyi.imgpuzzle.module.picker.ImageSelectorActivity
+import xyz.panyi.imgpuzzle.module.picker.SelectorOption
 
 /**
  *   MainActivity
  *
  *
  */
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
     companion object{
         const val TAG = "MainActivity"
         const val REQUEST_CODE_READ_IMAGES_PERMISSION= 100
@@ -26,8 +28,8 @@ class MainActivity : ComponentActivity() {
     private lateinit var mPuzzleBtn: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
         mPuzzleBtn = findViewById(R.id.imgs_puzzle_btn)

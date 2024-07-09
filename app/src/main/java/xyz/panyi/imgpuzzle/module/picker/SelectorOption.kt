@@ -1,4 +1,4 @@
-package xyz.panyi.imgpuzzle.picker
+package xyz.panyi.imgpuzzle.module.picker
 
 import java.io.Serializable
 
