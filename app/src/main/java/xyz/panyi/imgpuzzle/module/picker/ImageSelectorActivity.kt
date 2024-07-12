@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import xyz.panyi.imgpuzzle.R
 
-class ImageSelectorActivity : AppCompatActivity() {//end class
+class ImageSelectorActivity : AppCompatActivity() {
     companion object{
         const val TAG = "ImageSelectorActivity"
         const val INTENT_SELECTOR_OPTION = "intent_selector_option"
@@ -34,6 +34,7 @@ class ImageSelectorActivity : AppCompatActivity() {//end class
 
     private fun fillData(){
         val list = MediaQuery.queryImageFile(this)
+
     }
 
     @Suppress("DEPRECATION")
@@ -55,4 +56,4 @@ class ImageSelectorActivity : AppCompatActivity() {//end class
         }
         return super.onOptionsItemSelected(item)
     }
-}
+}//end class

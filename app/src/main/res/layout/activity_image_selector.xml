@@ -16,11 +16,14 @@
         android:background="@color/purple"
         android:elevation="10dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar" >
-        <Button
+        <TextView
             android:id="@+id/confirm_btn"
             android:text="@string/confirm"
             android:enabled="false"
-            android:layout_marginEnd="8dp"
+            android:textSize="@dimen/normal_text_size"
+            android:layout_marginEnd="16dp"
+            android:padding="8dp"
+            android:background="@drawable/green_rect_round_bg"
             android:layout_gravity="end|center_vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
