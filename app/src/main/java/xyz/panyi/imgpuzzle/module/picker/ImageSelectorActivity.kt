@@ -4,9 +4,14 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import xyz.panyi.imgpuzzle.R
+import xyz.panyi.imgpuzzle.model.SelectFileWrap
+import xyz.panyi.imgpuzzle.module.picker.adapter.SelectorAdapter
 
 class ImageSelectorActivity : AppCompatActivity() {
     companion object{
@@ -22,6 +27,10 @@ class ImageSelectorActivity : AppCompatActivity() {
     }
 
     private lateinit var mOption : SelectorOption
+    private val imageList = ArrayList<SelectFileWrap>()
+
+    private lateinit var adapter: SelectorAdapter
+    private lateinit var listView:RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +43,12 @@ class ImageSelectorActivity : AppCompatActivity() {
 
     private fun fillData(){
         val list = MediaQuery.queryImageFile(this)
+        imageList.clear()
+        list.forEach {
+            imageList.add(SelectFileWrap(it))
+        }
 
+        adapter.notifyDataSetChanged()
     }
 
     @Suppress("DEPRECATION")
@@ -48,6 +62,11 @@ class ImageSelectorActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         setTitle(R.string.select_images)
+
+        listView = findViewById(R.id.main_list)
+        listView.layoutManager = GridLayoutManager(this , 3 , RecyclerView.VERTICAL , false)
+        adapter = SelectorAdapter(this , imageList)
+        listView.adapter = adapter
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -56,4 +75,4 @@ class ImageSelectorActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-}//end class
+}//end activity class

@@ -27,7 +27,8 @@ object MediaQuery {
             MediaStore.Images.Media.HEIGHT,
             MediaStore.Images.Media.DATE_MODIFIED,
             MediaStore.Images.Media.BUCKET_ID,
-            MediaStore.Images.Media.ALBUM
+            MediaStore.Images.Media.ALBUM,
+            MediaStore.Images.Media.MIME_TYPE
         )
         val cur = context.contentResolver.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, projection,
             null,
@@ -42,10 +43,16 @@ object MediaQuery {
                         height = cur.getInt(cur.getColumnIndexOrThrow(MediaStore.Images.Media.HEIGHT))
                         size = cur.getLong(cur.getColumnIndexOrThrow(MediaStore.Images.Media.SIZE))
                         album = cur.getString(cur.getColumnIndexOrThrow(MediaStore.Images.Media.ALBUM))
+                        mime = cur.getString(cur.getColumnIndexOrThrow(MediaStore.Images.Media.MIME_TYPE))
+                    }
+                    cur.moveToNext()
+
+                    //先过滤掉gif图片
+                    if(item.mime?.lowercase()?.endsWith("gif") == true){
+                        continue
                     }
 
                     result.add(item)
-                    cur.moveToNext()
                 }
             }
             cur.close()
