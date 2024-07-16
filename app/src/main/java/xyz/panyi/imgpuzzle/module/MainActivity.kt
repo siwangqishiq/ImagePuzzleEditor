@@ -2,6 +2,7 @@ package xyz.panyi.imgpuzzle.module
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
@@ -39,12 +40,21 @@ class MainActivity : AppCompatActivity() {
 
     private fun openImageSelector(){
         LogUtil.i(TAG , "try open image selector")
-        if(ContextCompat.checkSelfPermission(this,  Manifest.permission.READ_EXTERNAL_STORAGE)
-            != PackageManager.PERMISSION_GRANTED){
-            requestPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), REQUEST_CODE_READ_IMAGES_PERMISSION)
+        if(Build.VERSION.SDK_INT >= 32){
+            if(ContextCompat.checkSelfPermission(this,  Manifest.permission.READ_MEDIA_IMAGES)
+                != PackageManager.PERMISSION_GRANTED){
+                requestPermissions(arrayOf(Manifest.permission.READ_MEDIA_IMAGES), REQUEST_CODE_READ_IMAGES_PERMISSION)
+            }else{
+                doOpenImageSelector()
+            }
         }else{
-            doOpenImageSelector()
-        }
+            if(ContextCompat.checkSelfPermission(this,  Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED){
+                requestPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), REQUEST_CODE_READ_IMAGES_PERMISSION)
+            }else{
+                doOpenImageSelector()
+            }
+        }//end if
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
