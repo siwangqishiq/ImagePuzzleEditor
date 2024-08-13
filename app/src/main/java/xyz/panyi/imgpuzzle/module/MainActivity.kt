@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun openImageSelector(){
         LogUtil.i(TAG , "try open image selector")
-        if(Build.VERSION.SDK_INT >= 32){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU){
             if(ContextCompat.checkSelfPermission(this,  Manifest.permission.READ_MEDIA_IMAGES)
                 != PackageManager.PERMISSION_GRANTED){
                 requestPermissions(arrayOf(Manifest.permission.READ_MEDIA_IMAGES), REQUEST_CODE_READ_IMAGES_PERMISSION)

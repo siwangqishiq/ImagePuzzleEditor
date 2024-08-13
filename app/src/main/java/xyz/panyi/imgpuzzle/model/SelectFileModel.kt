@@ -12,5 +12,6 @@ data class SelectFileModel(
 
 data class SelectFileWrap(
     var data:SelectFileModel?,
-    var selected:Boolean  = false
+    var selected:Boolean  = false,
+    var selectedCount:Int = 0
 )

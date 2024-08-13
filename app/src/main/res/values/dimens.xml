@@ -3,4 +3,5 @@
     <dimen name="toolbar_height">60dp</dimen>
 
     <dimen name="normal_text_size">16sp</dimen>
+    <dimen name="normal_text_size2">14sp</dimen>
 </resources>

@@ -20,7 +20,7 @@ class SelectorAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SelectorItemViewHolder {
         val itemView = layoutInflater.inflate(R.layout.view_selector_item , parent , false)
-        return SelectorItemViewHolder(itemView)
+        return SelectorItemViewHolder(itemView , ctx)
     }
 
     override fun getItemCount(): Int = dataList.size
